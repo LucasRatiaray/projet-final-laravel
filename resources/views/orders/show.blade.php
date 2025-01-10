@@ -14,7 +14,6 @@
                         <tr>
                             <th scope="col" class="px-6 py-3">#</th>
                             <th scope="col" class="px-6 py-3">Nom</th>
-                            <th scope="col" class="px-6 py-3">Description</th>
                             <th scope="col" class="px-6 py-3">Prix</th>
                             <th scope="col" class="px-6 py-3">En Stock</th>
                             <th scope="col" class="px-6 py-3">Dimensions (L x H x P)</th>
@@ -29,7 +28,6 @@
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $product->id }}</td>
                                 <td class="px-6 py-4">{{ $product->name }}</td>
-                                <td class="px-6 py-4">{{ $product->description }}</td>
                                 <td class="px-6 py-4">{{ $product->price }} €</td>
                                 <td class="px-6 py-4">
                                     @if ($product->in_stock === 0)
