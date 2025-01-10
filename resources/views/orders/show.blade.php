@@ -42,9 +42,16 @@
                                 </td>
                                 <td class="px-6 py-4">{{ $product->width }} x {{ $product->height }} x
                                     {{ $product->depth }}</td>
-                                <td class="px-6 py-4"> <span
-                                        class="bg-indigo-100 text-indigo-800 me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $product->category->name }}</span>
-                                </td>
+                                @if ($product->category_id)
+                                    <td class="px-6 py-4"> <span
+                                            class="bg-indigo-100 text-indigo-800 me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $product->category->name }}</span>
+                                    </td>
+                                @else
+                                    <td class="px-6 py-4"> <span
+                                            class="bg-red-100 text-red-800 me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Non
+                                            défini</span>
+                                    </td>
+                                @endif
                                 <td class="px-6 py-4">
                                     @if ($product->image_url)
                                         <img src="{{ Storage::url($product->image_url) }}" alt="{{ $product->name }}"
@@ -59,17 +66,48 @@
                 </table>
             </div>
         </div>
+        <form class="flex items-center px-4 gap-4" method="POST" action="{{ route('orders.update', $order->id) }}">
+            @csrf
+            @method('PUT')
+            <div class="mb-5 flex flex-col">
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Statut de la commande</label>
+                <select id="status" name="status"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <!-- Option actuelle comme sélectionnée -->
+                    <option value="{{ $order->status }}" selected>{{ ucfirst($order->status) }}</option>
+
+                    <!-- Autres options disponibles -->
+                    @if($order->status !== 'pending')
+                        <option value="pending">Pending</option>
+                    @endif
+                    @if($order->status !== 'delivered')
+                        <option value="delivered">Delivered</option>
+                    @endif
+                    @if($order->status !== 'shipped')
+                        <option value="shipped">Shipped</option>
+                    @endif
+                    @if($order->status !== 'cancelled')
+                        <option value="cancelled">Cancelled</option>
+                    @endif
+                    <!-- Ajoutez d'autres statuts si nécessaire -->
+                </select>
+            </div>
+            <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Mettre à jour
+            </button>
+        </form>
+
         <div class="flex items-center px-4 gap-4">
             <a href="{{ route('orders.index') }}"
-            class="py-3 px-5  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-            Retour
-        </a>
+                class="py-3 px-5  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                Retour
+            </a>
             <form method="POST" action="{{ route('orders.destroy', $order->id) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')"
-                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                >Supprimer</button>
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Supprimer</button>
             </form>
         </div>
     </div>

@@ -109,8 +109,22 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Valider les données entrantes
+        $validated = $request->validate([
+            'status' => 'required|string|in:pending,delivered,shipped,cancelled', // Remplacez par vos statuts réels
+        ]);
+
+        // Récupérer la commande ou échouer si elle n'existe pas
+        $order = Order::findOrFail($id);
+
+        // Mettre à jour le statut de la commande avec la valeur validée
+        $order->status = $validated['status'];
+        $order->save();
+
+        // Rediriger avec un message de succès
+        return redirect()->route('orders.index')->with('success', 'Commande mise à jour avec succès!');
     }
+
 
     /**
      * Remove the specified resource from storage.
