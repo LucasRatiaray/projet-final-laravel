@@ -161,10 +161,10 @@
                 </a>
             </li>
             <li>
-                <a href="#"
-                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('products.index') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
+                <a href="{{ route('categories.index') }}"
+                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('categories.index') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('products.index') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
+                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('categories.index') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
                         viewBox="0 0 24 24">
                         <path fill="currentColor" fill-rule="evenodd"
                             d="M17 3a4 4 0 1 0 0 8a4 4 0 0 0 0-8M3 17a4 4 0 1 1 8 0a4 4 0 0 1-8 0m10-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v5a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2zM3 4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"

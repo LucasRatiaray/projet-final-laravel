@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('height');
             $table->unsignedInteger('depth');
             $table->string('image_url')->nullable();
-            $table->foreignIdFor(Category::class)->nullable()->constrained();
+            $table->foreignIdFor(Category::class)->nullable()->constrained()->nullOnDelete();
         });
     }
 
