@@ -3,12 +3,13 @@
     <div class="sm:ml-64 pt-[64px] min-h-screen">
         <div class="p-4 rounded-lg dark:border-gray-700 py-12 ">
 
-            <form class="max-w-sm mx-auto" method="POST"
+            <form class="max-w-lg mx-auto" method="POST"
                 action="{{ route('products.update', $product) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="bg-red-100 text-red-700 px-4 py-3 rounded-lg mb-4">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -16,6 +17,9 @@
                         </ul>
                     </div>
                 @endif
+
+                <h1 class="text-2xl font-bold mb-6">Modifier un produit</h1>
+
                 <div class="mb-5">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Le nom du
                         meuble</label>
@@ -23,6 +27,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Table..." required />
                 </div>
+
                 <div class="mb-5">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Donnez
                         une description</label>
@@ -30,6 +35,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Pour manger..." required />
                 </div>
+
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quel est le
                     prix?</label>
                 <div class="mb-5 flex">
@@ -57,6 +63,7 @@
                         EUR
                     </button>
                 </div>
+
                 <label for="width" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quelle est la
                     largeur?</label>
                 <div class="mb-5 flex">
@@ -71,6 +78,7 @@
                         centimètres
                     </button>
                 </div>
+
                 <label for="height" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quelle est la
                     longueur?</label>
                 <div class="mb-5 flex">
@@ -85,6 +93,7 @@
                         centimètres
                     </button>
                 </div>
+
                 <label for="depth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quelle est la
                     profondeur?</label>
                 <div class="mb-5 flex">
@@ -99,6 +108,7 @@
                         centimètres
                     </button>
                 </div>
+
                 <div class="mb-5 flex flex-col">
                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quelle
                         est la catégorie?</label>
@@ -114,6 +124,7 @@
                         @endforeach
                     </select>
                 </div>
+
                 <div class="mb-5">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Télécharger l'image</label>
                     <input
@@ -128,6 +139,7 @@
                         </div>
                     @endif
                 </div>
+
                 <div class="flex items-start mb-5">
                     <div class="flex items-center h-5">
                         <input type="hidden" name="in_stock" value="0" />
@@ -138,6 +150,7 @@
                     <label for="in_stock" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">En
                         stock</label>
                 </div>
+
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Valider</button>
                 <a href="{{ route('products.index') }}"
@@ -145,7 +158,6 @@
                     Retour
                 </a>
             </form>
-
         </div>
     </div>
 

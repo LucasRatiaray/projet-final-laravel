@@ -11,7 +11,7 @@
     <div class="sm:ml-64 pt-[64px]">
         <div class="p-4 rounded-lg dark:border-gray-700">
             <div class="flex items-center justify-between mb-4">
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Meubles ({{ $count }})</h1>
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Produits ({{ $count }})</h1>
                 <a href="{{ route('products.create') }}"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 fixed right-4">
                     Créer
@@ -77,7 +77,7 @@
                                     action="{{ route('products.destroy', $p->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg"
                                             class="w-4 h-4 text-red-600" viewBox="0 0 16 16">
                                             <path fill="currentColor"
                                                 d="M2 5v10c0 .55.45 1 1 1h9c.55 0 1-.45 1-1V5zm3 9H4V7h1zm2 0H6V7h1zm2 0H8V7h1zm2 0h-1V7h1zm2.25-12H10V.75A.753.753 0 0 0 9.25 0h-3.5A.753.753 0 0 0 5 .75V2H1.75a.75.75 0 0 0-.75.75V4h13V2.75a.75.75 0 0 0-.75-.75M9 2H6v-.987h3z" />

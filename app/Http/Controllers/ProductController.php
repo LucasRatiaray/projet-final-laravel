@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
@@ -56,19 +56,15 @@ class ProductController extends Controller
         ]);
 
         $product = new Product();
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->width = $request->width;
-        $product->height = $request->height;
-        $product->depth = $request->depth;
-        $product->category_id = $request->category_id;
-
-        $image = $request->image;
-        $imagePath = $image->store('products', 'public');
-
-        $product->image_url = $imagePath;
-        $product->in_stock = $request->in_stock;
+        $product->name = $validated['name'];
+        $product->description = $validated['description'];
+        $product->price = $validated['price'];
+        $product->width = $validated['width'];
+        $product->height = $validated['height'];
+        $product->depth = $validated['depth'];
+        $product->category_id = $validated['category_id'];
+        $product->image_url = $request->file('image')->store('products', 'public');
+        $product->in_stock = $validated['in_stock'];
         $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
@@ -105,7 +101,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
@@ -113,27 +109,25 @@ class ProductController extends Controller
             'height' => 'required|numeric',
             'depth' => 'required|numeric',
             'category_id' => 'required',
-            'image' => 'image|max:2048',
+            'image' => 'required|image|max:2048',
             'in_stock' => 'required|integer|in:0,1',
         ]);
 
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
-        $product->price = $request->get('price');
-        $product->width = $request->get('width');
-        $product->height = $request->get('height');
-        $product->depth = $request->get('depth');
-        $product->category_id = $request->get('category_id');
-        $product->in_stock = $request->get('in_stock');
+        $product->name = $validated['name'];
+        $product->description = $validated['description'];
+        $product->price = $validated['price'];
+        $product->width = $validated['width'];
+        $product->height = $validated['height'];
+        $product->depth = $validated['depth'];
+        $product->category_id = $validated['category_id'];
+        $product->in_stock = $validated['in_stock'];
 
         if ($request->hasFile('image')) {
             if ($product->image_url && Storage::disk('public')->exists($product->image_url)) {
                 Storage::disk('public')->delete($product->image_url);
             }
 
-            $image = $request->file('image');
-            $imagePath = $image->store('products', 'public');
-            $product->image_url = $imagePath;
+            $product->image_url = $request->file('image')->store('products', 'public');
         }
 
         $product->save();
