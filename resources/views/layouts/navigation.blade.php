@@ -138,9 +138,9 @@
             </li>
             <li>
                 <a href="{{ route('products.index') }}"
-                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('products.index') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
+                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('products.*') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('products.index') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
+                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('products.*') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
                         viewBox="0 0 50 50">
                         <path fill="currentColor"
                             d="M46.495 11H3.521c-1.382 0-2.513 1.257-2.513 2.5s1.131 2.499 2.513 2.499h.607v5h41.821v-5h.546c1.383 0 2.513-1.256 2.513-2.499s-1.13-2.5-2.513-2.5m-21.487 7.52c-.694 0-1.256-.579-1.256-1.292s.562-1.292 1.256-1.292c.695 0 1.256.579 1.256 1.292s-.561 1.292-1.256 1.292M4.128 30.998h41.821V23H4.128zm20.88-5.374c.695 0 1.256.578 1.256 1.291c0 .714-.561 1.292-1.256 1.292c-.694 0-1.256-.578-1.256-1.292c-.001-.713.562-1.291 1.256-1.291M4.128 37.895v5.814c0 .71.089 1.292.78 1.292h5.024c.691 0 1.004-.582 1.004-1.292v-3.71h28.205v3.71c0 .71.252 1.292.942 1.292h5.025c.689 0 .84-.582.84-1.292V33H4.128zm20.88-2.583c.695 0 1.256.579 1.256 1.291c0 .715-.561 1.291-1.256 1.291c-.694 0-1.256-.576-1.256-1.291c-.001-.711.562-1.291 1.256-1.291" />
@@ -150,9 +150,9 @@
             </li>
             <li>
                 <a href="{{ route('orders.index') }}"
-                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('orders.index') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
+                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('orders.*') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('orders.index') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
+                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('orders.*') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
                         viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="M17 18c-1.11 0-2 .89-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2M1 2v2h2l3.6 7.59l-1.36 2.45c-.15.28-.24.61-.24.96a2 2 0 0 0 2 2h12v-2H7.42a.25.25 0 0 1-.25-.25q0-.075.03-.12L8.1 13h7.45c.75 0 1.41-.42 1.75-1.03l3.58-6.47c.07-.16.12-.33.12-.5a1 1 0 0 0-1-1H5.21l-.94-2M7 18c-1.11 0-2 .89-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2" />
@@ -162,9 +162,9 @@
             </li>
             <li>
                 <a href="{{ route('categories.index') }}"
-                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('categories.index') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
+                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('categories.*') ? 'text-gray-900 bg-gray-100 dark:bg-gray-700' : 'text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900' }}">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('categories.index') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
+                        class="w-5 h-5 transition duration-75 {{ request()->routeIs('categories.*') ? 'text-gray-900 group-hover:text-gray-900 dark:text-white' : 'text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' }}"
                         viewBox="0 0 24 24">
                         <path fill="currentColor" fill-rule="evenodd"
                             d="M17 3a4 4 0 1 0 0 8a4 4 0 0 0 0-8M3 17a4 4 0 1 1 8 0a4 4 0 0 1-8 0m10-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v5a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2zM3 4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"

@@ -24,8 +24,8 @@
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
-                            <tr
-                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr onclick="window.location='{{ route('products.show', $product->id) }}'"
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:cursor-pointer">
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $product->id }}</td>
                                 <td class="px-6 py-4">{{ $product->name }}</td>
@@ -70,23 +70,24 @@
             @csrf
             @method('PUT')
             <div class="mb-5 flex flex-col">
-                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Statut de la commande</label>
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Statut de la
+                    commande</label>
                 <select id="status" name="status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <!-- Option actuelle comme sélectionnée -->
                     <option value="{{ $order->status }}" selected>{{ ucfirst($order->status) }}</option>
 
                     <!-- Autres options disponibles -->
-                    @if($order->status !== 'pending')
+                    @if ($order->status !== 'pending')
                         <option value="pending">Pending</option>
                     @endif
-                    @if($order->status !== 'delivered')
+                    @if ($order->status !== 'delivered')
                         <option value="delivered">Delivered</option>
                     @endif
-                    @if($order->status !== 'shipped')
+                    @if ($order->status !== 'shipped')
                         <option value="shipped">Shipped</option>
                     @endif
-                    @if($order->status !== 'cancelled')
+                    @if ($order->status !== 'cancelled')
                         <option value="cancelled">Cancelled</option>
                     @endif
                     <!-- Ajoutez d'autres statuts si nécessaire -->

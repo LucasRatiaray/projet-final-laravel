@@ -50,12 +50,6 @@
                                     {{ $category->created_at->diffForHumans() }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="{{ route('categories.show', $category->id) }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Voir</a>
-                                    |
-                                    <a href="{{ route('categories.edit', $category->id) }}"
-                                        class="font-medium text-green-600 dark:text-green-500 hover:underline">Éditer</a>
-                                    |
                                     <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
